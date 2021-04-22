@@ -9,10 +9,19 @@ public class Main {
 		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
-			Connection connect = DriverManager.getConnection("jdbc:mysql://localhost:3306/PARCEL","root","Blake1010");
+			/**
+			URL, username, and password left blank intentionally. 		
+			*/
+			Connection connect = DriverManager.getConnection();
+			/**
+			Testing methods
+			*/
 			getPackageInfo(connect, 2);
 			getVehicle(connect, 1, "5666 E 11th St 85301");
 			getDeliveryRoute(connect, 1);
+			/**
+			Needs a toAddress to be tested
+			*/
 			sendPackage(connect, toAddress)
 
 		}catch(Exception e) {
