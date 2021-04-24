@@ -1,13 +1,15 @@
 #SER322 Group Project - Parcel Service
 
 ---
-##Application Domain: 
-####Packages handled within Arizona by the SER322 parcel service.
 
-##Description:
-####The purpose of this database is to store all shipping information to be queried by different types of users for tracking and
+## Application Domain: 
 
-##Requirements:
+#### Packages handled within Arizona by the SER322 parcel service.
+
+## Description:
+#### The purpose of this database is to store all shipping information to be queried by different types of users for tracking and
+
+## Requirements:
 #### - Each parcel should have various attributes associated with it such as weight, dimensions, and tracking number.
 #### - Must update package status in real time for tracking purposes.
 #### - Location, vehicle, estimated delivery time, etc.
@@ -17,7 +19,7 @@
 #### - Users can store their preferred address and contact information.
 
 ---
-##TODO:
+## TODO:
 
 ### Back-end
 
