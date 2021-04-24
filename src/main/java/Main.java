@@ -22,7 +22,7 @@ public class Main {
 			/**
 			Needs a toAddress to be tested
 			*/
-			sendPackage(connect, toAddress)
+			sendPackage(connect, toAddress);
 
 		}catch(Exception e) {
 			e.printStackTrace();

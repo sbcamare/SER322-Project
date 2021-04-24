@@ -1,0 +1,17 @@
+apply plugin: 'application'
+
+mainClassName = 'main/java/Main'
+
+compileJava.options.encoding = 'UTF-8'
+
+// Repositories and dependencies for code go here
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  compile "com.oracle.ojdbc:ojdbc8:19.3.0.0"
+  implementation 'mysql:mysql-connector-java:8.0.19'
+
+}
+
