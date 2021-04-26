@@ -1,18 +1,20 @@
 import java.sql.*;
 
 public class Main {
-	
 
-	public static void main(String[] args) {	
-		
-		
+	public static void main(String[] args) {
+
+		System.out.println("CONNECTION: "+args[0]);
+		System.out.println("USER: "+args[1]);
+		System.out.println("PASS: "+args[2]);
+		System.out.println("DRIVER: "+args[3]);
 		
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			/**
 			URL, username, and password left blank intentionally. 		
 			*/
-			Connection connect = DriverManager.getConnection();
+			Connection connect = DriverManager.getConnection(args[0]);
 			/**
 			Testing methods
 			*/
@@ -22,7 +24,7 @@ public class Main {
 			/**
 			Needs a toAddress to be tested
 			*/
-			sendPackage(connect, toAddress);
+			//sendPackage(connect, toAddress);
 
 		}catch(Exception e) {
 			e.printStackTrace();

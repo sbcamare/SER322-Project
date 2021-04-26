@@ -1,6 +1,6 @@
 apply plugin: 'application'
 
-mainClassName = 'main/java/Main'
+mainClassName = 'Main'
 
 compileJava.options.encoding = 'UTF-8'
 
@@ -15,3 +15,33 @@ dependencies {
 
 }
 
+
+def connection = "jdbc:mysql://localhost:3306/parcel"
+def user = "root"
+def pass = "root"
+def driver = "com.mysql.cj.jdbc.Driver"
+
+
+task arguments {
+  if (project.hasProperty("connection")) {
+    connection = project.getProperty("connection")
+  }
+  if (project.hasProperty("user")) {
+    user = project.getProperty("user")
+  }
+  if (project.hasProperty("pass")) {
+    pass = project.getProperty("pass")
+  }
+  if (project.hasProperty("driver")) {
+    driver = project.getProperty("driver")
+  }
+}
+
+run {
+  main
+  dependsOn(arguments)
+  args connection
+  args user
+  args pass
+  args driver
+}
