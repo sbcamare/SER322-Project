@@ -3,7 +3,7 @@ import java.sql.*;
 public class Main {
 
 	public static void main(String[] args) {
-
+	    ResultSet rs = null;
 		System.out.println("CONNECTION: "+args[0]);
 		System.out.println("USER: "+args[1]);
 		System.out.println("PASS: "+args[2]);
@@ -14,7 +14,8 @@ public class Main {
 			/**
 			URL, username, and password left blank intentionally. 		
 			*/
-			Connection connect = DriverManager.getConnection(args[0]);
+			Connection connect = DriverManager.getConnection(args[0], args[1], args[2]);
+            connect.setAutoCommit(false);
 			/**
 			Testing methods
 			*/
@@ -25,6 +26,9 @@ public class Main {
 			Needs a toAddress to be tested
 			*/
 			//sendPackage(connect, toAddress);
+			
+			// Route start and end times
+            routeTimes(rs, connect, 2);
 
 		}catch(Exception e) {
 			e.printStackTrace();
@@ -142,6 +146,49 @@ public class Main {
 		System.out.println();
 		
 	}
+	
+	
+	/**
+     * SELECT StartTime, EndTime, ArrivalTime FROM DELIVERY_ROUTE, DELIVERY WHERE
+     * ArrivalTime = current_time() between StartTime and EndTime
+     * 
+     * @throws SQLException
+     * 
+     */
+    public static void routeTimes(ResultSet resultSet, Connection connect, int routes) throws SQLException {
+        try {
+            PreparedStatement statement = connect.prepareStatement("SELECT StartTime, EndTime, ArrivalTime "
+                    + "FROM DELIVERY_ROUTE, DELIVERY "
+                    + "WHERE DELIVERY.ArrivalTime = ? between DELIVERY_ROUTE.StartTime AND DELIVERY_ROUTE.EndTime");
+
+            statement.setInt(1, routes);
+            resultSet = statement.executeQuery();
+
+            System.out.println("-------------------------------------");
+            System.out.println("|      Package Delivery Times       |");
+            System.out.println("-------------------------------------");
+            System.out.println("|   Earliest    |      Latest       |");
+            System.out.println("-------------------------------------");
+            while (resultSet.next()) {
+                System.out.println("|   " + resultSet.getTime(1) + "    |    " + resultSet.getTime(routes) + "       |");
+
+            }
+            System.out.println("-------------------------------------");
+        } catch (Exception e) {
+            e.printStackTrace();
+        } finally {
+            try {
+                if (resultSet != null) {
+                    resultSet.close();
+                }
+                if (connect != null) {
+                    connect.close();
+                }
+            } catch (SQLException se) {
+                se.printStackTrace();
+            }
+        }
+    }
 
 }	
 	
