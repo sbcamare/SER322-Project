@@ -24,7 +24,6 @@
 ### Back-end
 
 
-- Create user objects that hold user information
 - Create package objects that hold package information
 - Create static login class that holds current login information
 
