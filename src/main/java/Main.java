@@ -29,7 +29,11 @@ public class Main {
 			
 			// Route start and end times
             routeTimes(rs, connect, 2);
-
+            //list all packages
+            System.out.println("Track all packages:");
+            trackAllPackages(connect);
+            System.out.println("\n\nTrack a package");
+            trackAPackage(connect, 3);
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
@@ -181,14 +185,51 @@ public class Main {
                 if (resultSet != null) {
                     resultSet.close();
                 }
-                if (connect != null) {
-                    connect.close();
-                }
+                //if (connect != null) {
+                  //  connect.close();
+                //}
             } catch (SQLException se) {
                 se.printStackTrace();
             }
         }
     }
+    
+    public static void trackAllPackages(Connection connect) throws SQLException {
+        try {
+            PreparedStatement statement=connect.prepareStatement("SELECT CARRIES.VehicleID, ArrivalDate, ArrivalTime, ShippingSpeed, RouteID, PackageID "
+                            + "FROM VEHICLE, CARRIES, DELIVERY, RECEIVER, AT "
+                            + "WHERE VEHICLE.VehicleID = CARRIES.VehicleID "
+                            + "AND DELIVERY.DeliveryID = CARRIES.DeliveryID "
+                            + "AND RECEIVER.ToAddress =  DELIVERY.ToAddress "
+                            + "AND AT.DeliveryID =  DELIVERY.DeliveryID ");
+            ResultSet purchases=statement.executeQuery();
+            while(purchases.next()) { 
+                System.out.printf("Package: %s Arriving: %s At: %s On Route: %s\n",purchases.getInt("PackageID"),purchases.getString("ArrivalDate"),purchases.getString("ArrivalTime"), purchases.getInt("AT.RouteID"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        } 
+    }
+    
+    public static void trackAPackage(Connection connect, int packageId) throws SQLException {
+        try {
+            PreparedStatement statement=connect.prepareStatement( "SELECT CARRIES.VehicleID, ArrivalDate, ArrivalTime, ShippingSpeed, RouteID, PackageID "
+                            + "FROM VEHICLE, CARRIES, DELIVERY, RECEIVER, AT "
+                            + "WHERE VEHICLE.VehicleID = CARRIES.VehicleID "
+                            + "AND DELIVERY.DeliveryID = CARRIES.DeliveryID "
+                            + "AND RECEIVER.ToAddress =  DELIVERY.ToAddress "
+                            + "AND AT.DeliveryID = ? "
+                            + "AND AT.RouteID = DELIVERY.DeliveryID");
+            statement.setInt(1,packageId);
+            ResultSet purchases=statement.executeQuery();
+            while(purchases.next()) { 
+                System.out.printf("Package: %s Arriving: %s At: %s On Route: %s\n",purchases.getInt("PackageID"),purchases.getString("ArrivalDate"),purchases.getString("ArrivalTime"), purchases.getInt("RouteID"));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+        
 
 }	
 	
