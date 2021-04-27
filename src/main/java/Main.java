@@ -1,3 +1,6 @@
+import java.io.File;
+import java.io.FileWriter;
+import java.io.PrintWriter;
 import java.sql.*;
 
 import java.util.Random;
@@ -10,7 +13,7 @@ public class Main {
 
 
 	public static void main(String[] args) {
-	    ResultSet rs = null;
+		ResultSet rs = null;
 		System.out.println("CONNECTION: "+args[0]);
 		System.out.println("USER: "+args[1]);
 		System.out.println("PASS: "+args[2]);
@@ -27,7 +30,9 @@ public class Main {
 			Testing method
 			sendPackage(connect, 1111111111, "test214@email.com", "Fast", "34 S. ASU St. 85212", "1123 N 20th St 85112", "Box", 30, 26.8);
 			*/
-	getPackageInfo(connect, 2);
+			sendPackage(connect, 1231231234, "martin1@gmail.com", "FAST", "9235 E Carol Ave 85209" , "3134 W 15th St 85313" ,
+					"BOX", 30 , 1, "Mike", "Jones");
+            getPackageInfo(connect, 2);
 			getVehicle(connect, 1, "5666 E 11th St 85301");
 			getDeliveryRoute(connect, 1);
 			/**
@@ -37,11 +42,13 @@ public class Main {
 			
 			// Route start and end times
             routeTimes(rs, connect, 2);
+            
 
 
 		}catch(Exception e) {
 			e.printStackTrace();
 		}
+		
 }
 	
 	/**
@@ -133,6 +140,14 @@ public class Main {
 	/**
 	 * Method for sending a new package
 	 * 
+	 * Check to see if reciever exists in system
+	 * 		if not create new user and add them as reciever
+	 * 		if reciever exists
+	 * 			create new package
+	 * 			add package to new delivery
+	 * 
+	 * 		print shipping label to .txt file
+	 * 
 	 * 
 	 * @param connect
 	 * @param phone
@@ -146,40 +161,73 @@ public class Main {
 	 */
 	
 	public static void sendPackage(Connection connect, int phone, String email, String shippingSpeed, String toAddress, String fromAddress,
-			String packageType, int packageDimensions, double packageWeight) {
+			String packageType, int packageDimensions, double packageWeight, String firstName, String lastName) {
 		int newDelivery = -1;
+		
 		try {
 			int delID = random.nextInt(UPPER_BOUND);
+			PreparedStatement statement=connect.prepareStatement("SELECT * FROM RECEIVER WHERE RECEIVER.ToAddress = ?;"); 
+			statement.setString(1, toAddress);
+			ResultSet result=statement.executeQuery();
+			if(result.next() == false) {
+				PreparedStatement user=connect.prepareStatement("INSERT INTO USER(Phone, Email)" 
+						+ "VALUES(?,?);");
+				user.setInt(1, phone);
+				user.setString(2, email);
+				user.executeUpdate();
+				
+				
+				PreparedStatement reciever=connect.prepareStatement("INSERT INTO RECEIVER(Phone, Email, ToAddress)" 
+						+ "VALUES(?,?,?);");
+				
+				reciever.setInt(1, phone);
+				reciever.setString(2, email);
+				reciever.setString(3, toAddress);
+				reciever.executeUpdate();
+				
+				PreparedStatement newPackage=connect.prepareStatement("INSERT INTO PACKAGE(Type, PackageID, Dimensions, Weight)" 
+						+ "VALUES(?,?,?,?);");
+				
+				newPackage.setString(1, packageType);
+				newPackage.setInt(2, delID);
+				newPackage.setInt(3, packageDimensions);
+				newPackage.setDouble(4, packageWeight);
+				newPackage.executeUpdate();
+				
+				
+
+				PreparedStatement shipment=connect.prepareStatement("INSERT INTO DELIVERY(ArrivalDate, ArrivalTime, DeliveryID, ShippingSpeed, ToAddress, FromAddress, PackageID)" 
+						+ "VALUES(curdate(),curtime(),?,?,?,?,?);");
+						
+						/**
+						"INSERT INTO DELIVERY(DeliveryAddress)" 
+					+	"SELECT ToAddress" 
+					+	"FROM RECEIVER"
+					+	"WHERE ToAddress = ?"); 
+					*/
+				
+				shipment.setInt(1, delID);
+				shipment.setString(2, shippingSpeed);
+				shipment.setString(3, toAddress);
+				shipment.setString(4, fromAddress);
+				shipment.setInt(5, delID);
+				newDelivery = shipment.executeUpdate();
+				System.out.println("New user added and package added");
+			} else {
 			
 			
+				PreparedStatement newPackage=connect.prepareStatement("INSERT INTO PACKAGE(Type, PackageID, Dimensions, Weight)" 
+						+ "VALUES(?,?,?,?);");
 			
-			PreparedStatement user=connect.prepareStatement("INSERT INTO USER(Phone, Email)" 
-					+ "VALUES(?,?);");
-			user.setInt(1, phone);
-			user.setString(2, email);
-			user.executeUpdate();
-			
-			
-			PreparedStatement reciever=connect.prepareStatement("INSERT INTO RECEIVER(Phone, Email, ToAddress)" 
-					+ "VALUES(?,?,?);");
-			
-			reciever.setInt(1, phone);
-			reciever.setString(2, email);
-			reciever.setString(3, toAddress);
-			reciever.executeUpdate();
-			
-			PreparedStatement newPackage=connect.prepareStatement("INSERT INTO PACKAGE(Type, PackageID, Dimensions, Weight)" 
-					+ "VALUES(?,?,?,?);");
-			
-			newPackage.setString(1, packageType);
-			newPackage.setInt(2, delID);
-			newPackage.setInt(3, packageDimensions);
-			newPackage.setDouble(4, packageWeight);
-			newPackage.executeUpdate();
+				newPackage.setString(1, packageType);
+				newPackage.setInt(2, delID);
+				newPackage.setInt(3, packageDimensions);
+				newPackage.setDouble(4, packageWeight);
+				newPackage.executeUpdate();
 			
 			
 
-			PreparedStatement shipment=connect.prepareStatement("INSERT INTO DELIVERY(ArrivalDate, ArrivalTime, DeliveryID, ShippingSpeed, ToAddress, FromAddress, PackageID)" 
+				PreparedStatement shipment=connect.prepareStatement("INSERT INTO DELIVERY(ArrivalDate, ArrivalTime, DeliveryID, ShippingSpeed, ToAddress, FromAddress, PackageID)" 
 					+ "VALUES(curdate(),curtime(),?,?,?,?,?);");
 					
 					/**
@@ -189,28 +237,57 @@ public class Main {
 				+	"WHERE ToAddress = ?"); 
 				*/
 			
-			shipment.setInt(1, delID);
-			shipment.setString(2, shippingSpeed);
-			shipment.setString(3, toAddress);
-			shipment.setString(4, fromAddress);
-			shipment.setInt(5, delID);
-			newDelivery = shipment.executeUpdate();
+				shipment.setInt(1, delID);
+				shipment.setString(2, shippingSpeed);
+				shipment.setString(3, toAddress);
+				shipment.setString(4, fromAddress);
+				shipment.setInt(5, delID);
+				newDelivery = shipment.executeUpdate();
 			
-			if(newDelivery != -1) {
-				System.out.println("Success! " + newDelivery);
-			}
-			else {
-				System.out.println("Failure");
-			}
+				if(shipment != null) {
+					shipment.close();
+				}
+			
+				}
+			
+				try {
+					File myObj = new File("ShippingLabel.txt");
+					if (myObj.createNewFile()) {
+						System.out.println("File created: " + myObj.getName());
+					} else {
+						System.out.println("File already exists.");
+					}
+				} catch (Exception e) {
+					System.out.println("An error occurred.");
+					e.printStackTrace();
+				}
+			
+				FileWriter fileWriter = new FileWriter("ShippingLabel.txt");
+				PrintWriter printWriter = new PrintWriter(fileWriter);
+				printWriter.println(firstName + " " + lastName);
+				printWriter.println(toAddress);
+				printWriter.println("---------------------------");
+				printWriter.println("||| | || ||||||||| | ||| ||");
+				printWriter.println("||| | || ||||||||| | ||| ||");
+				printWriter.println("||| | || ||||||||| | ||| ||");
+				printWriter.println("||| | || ||||||||| | ||| ||");
+				printWriter.println("||| | || ||||||||| | ||| ||");
+				printWriter.println("||| | || ||||||||| | ||| ||");
+				printWriter.println("||| | || ||||||||| | ||| ||");
+				printWriter.println("---------------------------");
+				printWriter.close();
+			
+				if(newDelivery != -1) {
+					System.out.println("Success! " + newDelivery);
+				} else {
+					System.out.println("Failure");
+				}
 
-			if(shipment != null) {
-				shipment.close();
+			} catch(Exception e) {
+				e.printStackTrace();
 			}
-		} catch(Exception e) {
-			e.printStackTrace();
-		}
 		
-	}
+		}
 	
 	
 	/**
