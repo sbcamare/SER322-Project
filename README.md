@@ -23,12 +23,12 @@
 
 ### Back-end
 
-- Connect to database in appropriate classes
+
 - Create user objects that hold user information
 - Create package objects that hold package information
 - Create static login class that holds current login information
-- Allow users to send a package by adding it to the database.
-- Print a package label when a package is sent.
+
+
 
 ### Front-end
 
