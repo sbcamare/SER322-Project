@@ -3,9 +3,9 @@ package ui;
 import javax.swing.*;
 import java.awt.*;
 
-public class sendPackagePanel extends JPanel {
+public class SendPackagePanel extends JPanel {
 
-    public sendPackagePanel() {
+    public SendPackagePanel() {
 
         JPanel spPanel;
         JLabel typeLabel;
@@ -83,7 +83,7 @@ public class sendPackagePanel extends JPanel {
         spPanel.add(typeComboBox, gbc);
 
         titleLabel = new JLabel();
-        titleLabel.setText("SENDING A PACKAGE");
+        titleLabel.setText("<html><span style='font-size:14px'>SENDING A PACKAGE</span></html>");
         gbc = new GridBagConstraints();
         gbc.gridx = 1;
         gbc.gridy = 1;

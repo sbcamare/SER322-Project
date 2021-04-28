@@ -3,9 +3,9 @@ package ui;
 import javax.swing.*;
 import java.awt.*;
 
-public class trackPackagePanel extends JPanel {
+public class TrackPackagePanel extends JPanel {
 
-    public trackPackagePanel() { // TODO: ADD FIELD LISTENER AND LOGIC
+    public TrackPackagePanel() { // TODO: ADD FIELD LISTENER AND LOGIC
 
         JPanel tpPanel;
         JLabel tpTitleLabel;
@@ -22,7 +22,7 @@ public class trackPackagePanel extends JPanel {
         GridBagConstraints gbc;
 
         tpTitleLabel = new JLabel();
-        tpTitleLabel.setText("ENTER A PACKAGE TO TRACK");
+        tpTitleLabel.setText("<html><span style='font-size:14px'>ENTER A PACKAGE TO TRACK</span></html>");
         gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 0;
