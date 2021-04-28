@@ -4,9 +4,9 @@ import javax.swing.*;
 import javax.swing.border.TitledBorder;
 import java.awt.*;
 
-public class yourPackagesPanel extends JPanel {
+public class YourPackagesPanel extends JPanel {
 
-    public yourPackagesPanel() { // TODO: ADD PACKAGES TO packageListPanel
+    public YourPackagesPanel() { // TODO: ADD PACKAGES TO packageListPanel
 
         JPanel ypPanel;
         JLabel ypTitleLabel;
@@ -22,7 +22,7 @@ public class yourPackagesPanel extends JPanel {
         GridBagConstraints gbc;
 
         ypTitleLabel = new JLabel();
-        ypTitleLabel.setText("VIEWING YOUR PACKAGES");
+        ypTitleLabel.setText("<html><span style='font-size:14px'>VIEWING YOUR PACKAGES</span></html>");
         gbc = new GridBagConstraints();
         gbc.gridx = 1;
         gbc.gridy = 1;

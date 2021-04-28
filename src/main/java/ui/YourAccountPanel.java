@@ -1,11 +1,13 @@
 package ui;
 
+import util.App;
+
 import javax.swing.*;
 import java.awt.*;
 
-public class yourAccountPanel extends JPanel {
+public class YourAccountPanel extends JPanel {
 
-    public yourAccountPanel() { // TODO: ADD USER INFO
+    public YourAccountPanel() { // TODO: ADD USER INFO
 
         JPanel yaPanel;
         JLabel yaTitleLabel;
@@ -32,7 +34,7 @@ public class yourAccountPanel extends JPanel {
         GridBagConstraints gbc;
 
         yaTitleLabel = new JLabel();
-        yaTitleLabel.setText("YOUR ACCOUNT INFORMATION");
+        yaTitleLabel.setText("<html><span style='font-size:14px'>YOUR ACCOUNT INFORMATION</span></html>");
         gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 1;
@@ -102,7 +104,7 @@ public class yourAccountPanel extends JPanel {
         yaPanel.add(emailLabel, gbc);
 
         fLabel = new JLabel();
-        fLabel.setText("Label");
+        fLabel.setText(App.firstName);
         gbc = new GridBagConstraints();
         gbc.gridx = 1;
         gbc.gridy = 3;
@@ -111,7 +113,7 @@ public class yourAccountPanel extends JPanel {
         yaPanel.add(fLabel, gbc);
 
         lLabel = new JLabel();
-        lLabel.setText("Label");
+        lLabel.setText(App.lastName);
         gbc = new GridBagConstraints();
         gbc.gridx = 1;
         gbc.gridy = 5;
@@ -120,7 +122,7 @@ public class yourAccountPanel extends JPanel {
         yaPanel.add(lLabel, gbc);
 
         pLabel = new JLabel();
-        pLabel.setText("Label");
+        pLabel.setText(App.userPhone);
         gbc = new GridBagConstraints();
         gbc.gridx = 1;
         gbc.gridy = 7;
@@ -129,7 +131,7 @@ public class yourAccountPanel extends JPanel {
         yaPanel.add(pLabel, gbc);
 
         eLabel = new JLabel();
-        eLabel.setText("Label");
+        eLabel.setText(App.userEmail);
         gbc = new GridBagConstraints();
         gbc.gridx = 1;
         gbc.gridy = 9;
@@ -145,7 +147,7 @@ public class yourAccountPanel extends JPanel {
         yaPanel.add(spacer20, gbc);
 
         addressLabel = new JLabel();
-        addressLabel.setText("Address:");
+        addressLabel.setText("Preferred Address:");
         gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 11;

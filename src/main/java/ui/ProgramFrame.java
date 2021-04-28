@@ -1,7 +1,6 @@
 package ui;
 
 import javax.swing.*;
-import javax.swing.border.TitledBorder;
 import java.awt.*;
 import java.awt.event.*;
 
@@ -83,16 +82,16 @@ public class ProgramFrame extends JFrame {
 		cardPanel.setLayout(new CardLayout(0, 0));
 		parentPanel.add(cardPanel, BorderLayout.CENTER);
 
-		yourPackagesPanel = new yourPackagesPanel();
+		yourPackagesPanel = new YourPackagesPanel();
 		cardPanel.add(yourPackagesPanel, "yourPackagesCard");
 
-		trackPackagePanel = new trackPackagePanel();
+		trackPackagePanel = new TrackPackagePanel();
 		cardPanel.add(trackPackagePanel, "trackPackageCard");
 
-		sendPackagePanel = new sendPackagePanel();
+		sendPackagePanel = new SendPackagePanel();
 		cardPanel.add(sendPackagePanel, "sendPackageCard");
 
-		yourAccountPanel = new yourAccountPanel();
+		yourAccountPanel = new YourAccountPanel();
 		cardPanel.add(yourAccountPanel, "yourAccountCard");
 
 
