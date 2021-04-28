@@ -5,36 +5,35 @@ import java.awt.*;
 
 public class SendPackagePanel extends JPanel {
 
-
-    private JPanel spPanel;
-    private JLabel titleLabel;
-    private JLabel messageLabel;
-    private JLabel message2Label;
-    private JTextField dimField;
-    private JTextField weightField;
-    private JComboBox speedComboBox;
-    private JComboBox typeComboBox;
-    private JTextField shipFromField;
-    private JTextField firstField;
-    private JTextField lastField;
-    private JTextField emailField;
-    private JTextField phoneField;
-    private JTextField shipToField;
-    private JButton printButton;
-    private JLabel shipFromLabel;
-    private JLabel speedLabel;
-    private JLabel weightLabel;
-    private JLabel dimLabel;
-    private JLabel typeLabel;
-    private JLabel message3Label;
-    private JLabel firstLabel;
-    private JLabel lastLabel;
-    private JLabel emailLabel;
-    private JLabel phoneLabel;
-    private JLabel shipToLabel;
-
-
     public SendPackagePanel() {
+
+        JPanel spPanel;
+        JLabel titleLabel;
+        JLabel messageLabel;
+        JLabel message2Label;
+        JTextField dimField;
+        JTextField weightField;
+        JComboBox speedComboBox;
+        JComboBox typeComboBox;
+        JTextField shipFromField;
+        JTextField firstField;
+        JTextField lastField;
+        JTextField emailField;
+        JTextField phoneField;
+        JTextField shipToField;
+        JButton printButton;
+        JLabel shipFromLabel;
+        JLabel speedLabel;
+        JLabel weightLabel;
+        JLabel dimLabel;
+        JLabel typeLabel;
+        JLabel message3Label;
+        JLabel firstLabel;
+        JLabel lastLabel;
+        JLabel emailLabel;
+        JLabel phoneLabel;
+        JLabel shipToLabel;
+
 
 
         setLayout(new CardLayout(0, 0));
