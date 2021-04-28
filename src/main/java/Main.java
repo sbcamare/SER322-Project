@@ -30,7 +30,7 @@ public class Main {
 			Testing method
 			sendPackage(connect, 1111111111, "test214@email.com", "Fast", "34 S. ASU St. 85212", "1123 N 20th St 85112", "Box", 30, 26.8);
 			*/
-			sendPackage(connect, 1231231234, "martin1@gmail.com", "FAST", "9235 E Carol Ave 85209" , "3134 W 15th St 85313" ,
+			sendPackage(connect, 1231231234, 2121098712, "martin1@gmail.com", "ivanaC@gmail.com", "FAST", "9236 E Carol Ave 85209" , "3134 W 15th St 85313" ,
 					"BOX", 30 , 1, "Mike", "Jones");
             getPackageInfo(connect, 2);
 			getVehicle(connect, 1, "5666 E 11th St 85301");
@@ -160,60 +160,52 @@ public class Main {
 	 * @param packageWeight
 	 */
 	
-	public static void sendPackage(Connection connect, int phone, String email, String shippingSpeed, String toAddress, String fromAddress,
+	public static void sendPackage(Connection connect, int senderPhone, int receiverPhone, String senderEmail, String receiverEmail, String shippingSpeed, String toAddress, String fromAddress,
 			String packageType, int packageDimensions, double packageWeight, String firstName, String lastName) {
 		int newDelivery = -1;
 		
 		try {
+			
 			int delID = random.nextInt(UPPER_BOUND);
 			PreparedStatement statement=connect.prepareStatement("SELECT * FROM RECEIVER WHERE RECEIVER.ToAddress = ?;"); 
 			statement.setString(1, toAddress);
 			ResultSet result=statement.executeQuery();
+			
 			if(result.next() == false) {
 				PreparedStatement user=connect.prepareStatement("INSERT INTO USER(Phone, Email)" 
 						+ "VALUES(?,?);");
-				user.setInt(1, phone);
-				user.setString(2, email);
+				user.setInt(1, receiverPhone);
+				user.setString(2, receiverEmail);
 				user.executeUpdate();
 				
 				
 				PreparedStatement reciever=connect.prepareStatement("INSERT INTO RECEIVER(Phone, Email, ToAddress)" 
 						+ "VALUES(?,?,?);");
 				
-				reciever.setInt(1, phone);
-				reciever.setString(2, email);
+				reciever.setInt(1, receiverPhone);
+				reciever.setString(2, receiverEmail);
 				reciever.setString(3, toAddress);
 				reciever.executeUpdate();
 				
-				PreparedStatement newPackage=connect.prepareStatement("INSERT INTO PACKAGE(Type, PackageID, Dimensions, Weight)" 
-						+ "VALUES(?,?,?,?);");
 				
-				newPackage.setString(1, packageType);
-				newPackage.setInt(2, delID);
-				newPackage.setInt(3, packageDimensions);
-				newPackage.setDouble(4, packageWeight);
-				newPackage.executeUpdate();
-				
-				
-
-				PreparedStatement shipment=connect.prepareStatement("INSERT INTO DELIVERY(ArrivalDate, ArrivalTime, DeliveryID, ShippingSpeed, ToAddress, FromAddress, PackageID)" 
-						+ "VALUES(curdate(),curtime(),?,?,?,?,?);");
-						
-						/**
-						"INSERT INTO DELIVERY(DeliveryAddress)" 
-					+	"SELECT ToAddress" 
-					+	"FROM RECEIVER"
-					+	"WHERE ToAddress = ?"); 
-					*/
-				
-				shipment.setInt(1, delID);
-				shipment.setString(2, shippingSpeed);
-				shipment.setString(3, toAddress);
-				shipment.setString(4, fromAddress);
-				shipment.setInt(5, delID);
-				newDelivery = shipment.executeUpdate();
 				System.out.println("New user added and package added");
-			} else {
+			}
+			
+			PreparedStatement seachSender = connect.prepareStatement("SELECT * FROM SENDER WHERE SENDER.FromAddress = ?;"); 
+			seachSender.setString(1, fromAddress);
+			ResultSet senderResult=statement.executeQuery();
+			
+			if(senderResult.next() == false) {
+				PreparedStatement reciever=connect.prepareStatement("INSERT INTO SENDER(Phone, Email, FromAddress)" 
+						+ "VALUES(?,?,?);");
+				
+				reciever.setInt(1, senderPhone);
+				reciever.setString(2, senderEmail);
+				reciever.setString(3, fromAddress);
+				reciever.executeUpdate();
+			}
+			
+			
 			
 			
 				PreparedStatement newPackage=connect.prepareStatement("INSERT INTO PACKAGE(Type, PackageID, Dimensions, Weight)" 
@@ -248,7 +240,6 @@ public class Main {
 					shipment.close();
 				}
 			
-				}
 			
 				try {
 					File myObj = new File("ShippingLabel.txt");
