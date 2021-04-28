@@ -31,8 +31,6 @@
 
 ### Front-end
 
-- Add user login screen.
-- Add user signup screen.
 - Error checking for user input.
 - Add main parent window.
 - Allow users to view a list of packages 'related' to them.
