@@ -6,19 +6,22 @@ import java.awt.*;
 public class sendPackagePanel extends JPanel {
 
 
-    private JPanel spPanel;
-    private JLabel typeLabel;
-    private JLabel dimensionsLabel;
-    private JLabel weightLabel;
-    private JTextField weightField;
-    private JTextField dimensionsField;
-    private JComboBox typeComboBox;
-    private JLabel titleLabel;
-    private JLabel messageLabel;
-    private JButton printButton;
+
 
 
     public sendPackagePanel() {
+
+        JPanel spPanel;
+        JLabel typeLabel;
+        JLabel dimensionsLabel;
+        JLabel weightLabel;
+        JTextField weightField;
+        JTextField dimensionsField;
+        JComboBox typeComboBox;
+        JLabel titleLabel;
+        JLabel messageLabel;
+        JButton printButton;
+
 
         setLayout(new CardLayout(0, 0));
         setAlignmentX(0.5f);

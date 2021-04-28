@@ -6,24 +6,23 @@ import java.awt.*;
 public class yourAccountPanel extends JPanel {
 
 
-    private JPanel yaPanel;
 
 
-    private JLabel yaTitleLabel;
 
-    private JLabel firstNLabel;
-    private JLabel fLabel;
-    private JLabel lLabel;
-    private JLabel pLabel;
-    private JLabel phoneLabel;
-    private JLabel lastNLabel;
-    private JLabel emailLabel;
-    private JLabel eLabel;
-    private JLabel addressLabel;
-    private JLabel aLabel;
+    public yourAccountPanel() { // TODO: ADD USER INFO
 
-
-    public yourAccountPanel() {
+        JPanel yaPanel;
+        JLabel yaTitleLabel;
+        JLabel firstNLabel;
+        JLabel fLabel;
+        JLabel lLabel;
+        JLabel pLabel;
+        JLabel phoneLabel;
+        JLabel lastNLabel;
+        JLabel emailLabel;
+        JLabel eLabel;
+        JLabel addressLabel;
+        JLabel aLabel;
 
 
         setLayout(new CardLayout(0, 0));
