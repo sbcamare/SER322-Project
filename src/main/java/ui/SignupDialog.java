@@ -404,7 +404,7 @@ public class SignupDialog extends JDialog {
 				if (isPhone(phoneField.getText())) {
 					phoneField.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.green));
 				}
-				if (isPhone(phoneField.getText())  && passMatch(String.valueOf(passField.getPassword()), String.valueOf(passConField.getPassword())) && isEmail(emailField.getText())) {
+				if (isPhone(phoneField.getText()) && passMatch(String.valueOf(passField.getPassword()), String.valueOf(passConField.getPassword())) && isEmail(emailField.getText())) {
 					signButton.setEnabled(true);
 				}
 			}
@@ -563,8 +563,7 @@ public class SignupDialog extends JDialog {
 
 			if (Login.userSignup(email, pass, first, last, phone)) { // SIGNUP SUCCESSFUL
 				dispose();
-			}
-			else { // SIGNUP FAILED... USERNAME IS ALREADY TAKEN
+			} else { // SIGNUP FAILED... USERNAME IS ALREADY TAKEN
 				JOptionPane.showMessageDialog(null, "This user already exists!", "Unable to sign up!", JOptionPane.WARNING_MESSAGE);
 				emailField.setBorder(BorderFactory.createMatteBorder(1, 1, 1, 1, Color.red));
 			}
