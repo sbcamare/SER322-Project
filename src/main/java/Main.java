@@ -171,6 +171,10 @@ public class Main {
 			statement.setString(1, toAddress);
 			ResultSet result=statement.executeQuery();
 			
+			/**
+			 * check to see if receiver has receiver a package before. If not 
+			 * add them to the system. 
+			 */
 			if(result.next() == false) {
 				PreparedStatement user=connect.prepareStatement("INSERT INTO USER(Phone, Email)" 
 						+ "VALUES(?,?);");
@@ -195,6 +199,9 @@ public class Main {
 			seachSender.setString(1, fromAddress);
 			ResultSet senderResult=statement.executeQuery();
 			
+			/**
+			 * Check to see if sender has shipped package before
+			 */
 			if(senderResult.next() == false) {
 				PreparedStatement reciever=connect.prepareStatement("INSERT INTO SENDER(Phone, Email, FromAddress)" 
 						+ "VALUES(?,?,?);");
