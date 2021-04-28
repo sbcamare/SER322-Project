@@ -1,6 +1,6 @@
 package ui;
 
-import util.Login;
+import util.App;
 
 import javax.swing.*;
 import javax.swing.event.DocumentEvent;
@@ -561,7 +561,7 @@ public class SignupDialog extends JDialog {
 			String last = lastNField.getText();
 			String phone = phoneField.getText();
 
-			if (Login.userSignup(email, pass, first, last, phone)) { // SIGNUP SUCCESSFUL
+			if (App.userSignup(email, pass, first, last, phone)) { // SIGNUP SUCCESSFUL
 				dispose();
 			} else { // SIGNUP FAILED... USERNAME IS ALREADY TAKEN
 				JOptionPane.showMessageDialog(null, "This user already exists!", "Unable to sign up!", JOptionPane.WARNING_MESSAGE);

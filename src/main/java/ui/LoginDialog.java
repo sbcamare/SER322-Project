@@ -1,6 +1,6 @@
 package ui;
 
-import util.Login;
+import util.App;
 
 
 import javax.swing.*;
@@ -335,7 +335,7 @@ public class LoginDialog extends JDialog{
             String email = emailField.getText();
             String pass = String.valueOf(passField.getPassword());
 
-            if (Login.userLogin(email, pass)) { // LOGIN WAS SUCCESSFUL
+            if (App.userLogin(email, pass)) { // LOGIN WAS SUCCESSFUL
                dispose();
             }
             else { // LOGIN FAILED... WRONG CREDENTIALS

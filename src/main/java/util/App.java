@@ -3,18 +3,19 @@ package util;
 import java.sql.*;
 
 import ui.LoginDialog;
+import ui.ProgramFrame;
 import ui.SignupDialog;
 
 import javax.swing.*;
 
-public class Login {
+public class App {
 
 	public static String userEmail;
 	public static String firstName;
 	public static String lastName;
 	public static String userPhone;
 
-	public static void showLogin() {
+	public static void show() {
 		JDialog loginDialog = new LoginDialog();
 		loginDialog.setLocationRelativeTo(null);
 		loginDialog.setVisible(true);
@@ -24,6 +25,12 @@ public class Login {
 			signupDialog.setLocationRelativeTo(null);
 			signupDialog.setVisible(true);
 		}
+
+		JFrame programFrame = new ProgramFrame();
+		programFrame.setLocationRelativeTo(null);
+		programFrame.setVisible(true);
+
+
 	}
 
 
@@ -106,9 +113,9 @@ public class Login {
 
 			prep.setString(1, email);
 			prep.setString(2, password);
-			prep.setString(4, first);
-			prep.setString(5, last);
-			prep.setString(3, phone);
+			prep.setString(3, first);
+			prep.setString(4, last);
+			prep.setString(5, phone);
 			prep.addBatch();
 
 			connection.setAutoCommit(false);
