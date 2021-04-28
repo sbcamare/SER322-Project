@@ -1,6 +1,5 @@
-import ui.ProgramFrame;
 import util.Database;
-import util.Login;
+import util.App;
 
 import java.sql.*;
 
@@ -21,9 +20,7 @@ public class Main {
 
 		Database.setDatabase(args[0], args[1], args[2], args[3]);
 
-		//Login.showLogin();
-
-		new ProgramFrame();
+		App.show();
 
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
