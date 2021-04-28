@@ -47,6 +47,17 @@ public class Main {
 			// Route start and end times
 			routeTimes(rs, connect, 2);
 
+			/*
+			 * LUIS PACKAGE CLASS TEST
+			 */
+			System.out.println("TESTING DELIVERY CLASS");
+			Delivery delTest = new Delivery(1);
+			System.out.println(delTest.getDeliveryId());
+			System.out.println(delTest.getArrivalDate());
+			System.out.println(delTest.getArrivalTime());
+			System.out.println(delTest.getShippingSpeed());
+			System.out.println(delTest.getToAddress());
+			System.out.println(delTest.getFromAddress());
 
 		} catch (Exception e) {
 			e.printStackTrace();
