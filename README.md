@@ -22,16 +22,11 @@
 ## TODO:
 
 ### Back-end
-
-
+- Create package objects that hold package information
 - Create static login class that holds current login information
-
-
 
 ### Front-end
 
-- Add user login screen.
-- Add user signup screen.
 - Error checking for user input.
 - Add main parent window.
 - Allow users to view a list of packages 'related' to them.
