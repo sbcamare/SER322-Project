@@ -5,10 +5,6 @@ import java.awt.*;
 
 public class yourAccountPanel extends JPanel {
 
-
-
-
-
     public yourAccountPanel() { // TODO: ADD USER INFO
 
         JPanel yaPanel;

@@ -13,13 +13,11 @@ public class yourPackagesPanel extends JPanel {
         JLabel ypMessageLabel;
         JPanel packageListPanel;
 
-
         setLayout(new CardLayout(0, 0));
 
         ypPanel = new JPanel();
         ypPanel.setLayout(new GridBagLayout());
         add(ypPanel, "yourPackagesCard");
-
 
         GridBagConstraints gbc;
 
@@ -81,6 +79,9 @@ public class yourPackagesPanel extends JPanel {
         gbc.insets = new Insets(100, 0, 100, 0);
         ypPanel.add(packageListPanel, gbc);
         packageListPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.black), null, TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, null, null));
+
+
+
     }
 
 

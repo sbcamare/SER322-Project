@@ -5,10 +5,6 @@ import java.awt.*;
 
 public class sendPackagePanel extends JPanel {
 
-
-
-
-
     public sendPackagePanel() {
 
         JPanel spPanel;

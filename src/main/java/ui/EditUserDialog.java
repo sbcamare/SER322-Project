@@ -5,20 +5,17 @@ import javax.swing.*;
 import java.awt.*;
 import java.awt.event.*;
 
-public class EditUserDialog extends JDialog {
+public class EditUserDialog extends JDialog { // TODO: UPDATE TO EDIT PACKAGES
 
 
 	//public EditUserDialog(User user)
 	public EditUserDialog() {
-
 
 		JPanel contentPane;
 		JButton buttonOK;
 		JButton buttonCancel;
 		JLabel userLabel;
 		JLabel uLabel;
-
-
 
 		contentPane = new JPanel();
 		contentPane.setLayout(new GridBagLayout());

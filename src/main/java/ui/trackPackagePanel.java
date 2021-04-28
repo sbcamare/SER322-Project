@@ -5,7 +5,6 @@ import java.awt.*;
 
 public class trackPackagePanel extends JPanel {
 
-
     public trackPackagePanel() { // TODO: ADD FIELD LISTENER AND LOGIC
 
         JPanel tpPanel;
