@@ -167,54 +167,83 @@ public class Main {
 		try {
 			
 			int delID = random.nextInt(UPPER_BOUND);
-			PreparedStatement statement=connect.prepareStatement("SELECT * FROM RECEIVER WHERE RECEIVER.ToAddress = ?;"); 
-			statement.setString(1, toAddress);
-			ResultSet result=statement.executeQuery();
+			
+			PreparedStatement userSearch = connect.prepareStatement("SELECT * FROM USER WHERE USER.Email = ?;"); 
+			userSearch.setString(1, receiverEmail);
+			ResultSet userResult = userSearch.executeQuery();
+			
+			if(userResult.next() == false) {
+				PreparedStatement user=connect.prepareStatement("INSERT INTO USER(Phone, Email, First, Last)" 
+						+ "VALUES(?,?,?,?);");
+				user.setInt(1, receiverPhone);
+				user.setString(2, receiverEmail);
+				user.setString(3, firstName);
+				user.setString(4, lastName);
+				user.executeUpdate();
+			
+				
+				if(user != null) {
+					user.close();
+				}
+				
+				System.out.println("New user added");
+			}
+			
+			
+			
+			
+			PreparedStatement receiverSearch = connect.prepareStatement("SELECT * FROM RECEIVER WHERE RECEIVER.ToAddress = ?;"); 
+			receiverSearch.setString(1, toAddress);
+			ResultSet receiverResult=receiverSearch.executeQuery();
 			
 			/**
 			 * check to see if receiver has receiver a package before. If not 
 			 * add them to the system. 
 			 */
-			if(result.next() == false) {
-				PreparedStatement user=connect.prepareStatement("INSERT INTO USER(Phone, Email)" 
-						+ "VALUES(?,?);");
-				user.setInt(1, receiverPhone);
-				user.setString(2, receiverEmail);
-				user.executeUpdate();
+			if(receiverResult.next() == false) {
 				
 				
-				PreparedStatement reciever=connect.prepareStatement("INSERT INTO RECEIVER(Phone, Email, ToAddress)" 
+				PreparedStatement receiver=connect.prepareStatement("INSERT INTO RECEIVER(Phone, Email, ToAddress)" 
 						+ "VALUES(?,?,?);");
 				
-				reciever.setInt(1, receiverPhone);
-				reciever.setString(2, receiverEmail);
-				reciever.setString(3, toAddress);
-				reciever.executeUpdate();
+				receiver.setInt(1, receiverPhone);
+				receiver.setString(2, receiverEmail);
+				receiver.setString(3, toAddress);
+				receiver.executeUpdate();
 				
 				
-				System.out.println("New user added and package added");
+				
+				if(receiver != null) {
+					receiver.close();
+				}
+				
+				
+				System.out.println("New  receiver added and package added");
 			}
 			
-			PreparedStatement seachSender = connect.prepareStatement("SELECT * FROM SENDER WHERE SENDER.FromAddress = ?;"); 
-			seachSender.setString(1, fromAddress);
-			ResultSet senderResult=statement.executeQuery();
+			PreparedStatement searchSender = connect.prepareStatement("SELECT * FROM SENDER WHERE SENDER.FromAddress = ?;"); 
+			searchSender.setString(1, fromAddress);
+			ResultSet senderResult= searchSender.executeQuery();
 			
 			/**
 			 * Check to see if sender has shipped package before
 			 */
 			if(senderResult.next() == false) {
-				PreparedStatement reciever=connect.prepareStatement("INSERT INTO SENDER(Phone, Email, FromAddress)" 
+				PreparedStatement sender =connect.prepareStatement("INSERT INTO SENDER(Phone, Email, FromAddress)" 
 						+ "VALUES(?,?,?);");
 				
-				reciever.setInt(1, senderPhone);
-				reciever.setString(2, senderEmail);
-				reciever.setString(3, fromAddress);
-				reciever.executeUpdate();
+				sender.setInt(1, senderPhone);
+				sender.setString(2, senderEmail);
+				sender.setString(3, fromAddress);
+				sender.executeUpdate();
+				
+				if(sender != null) {
+					sender.close();
+				}
+				
+				
 			}
-			
-			
-			
-			
+
 				PreparedStatement newPackage=connect.prepareStatement("INSERT INTO PACKAGE(Type, PackageID, Dimensions, Weight)" 
 						+ "VALUES(?,?,?,?);");
 			
@@ -245,6 +274,10 @@ public class Main {
 			
 				if(shipment != null) {
 					shipment.close();
+				}
+				
+				if(newPackage != null) {
+					newPackage.close();
 				}
 			
 			
