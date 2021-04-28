@@ -1,9 +1,9 @@
 create table USER
 (
     Email       varchar(30)     NOT NULL,
-    Password    varchar(30)     NOT NULL,
-    First       varchar(15)     NOT NULL,
-    Last        varchar(15)     NOT NULL,
+    Password    varchar(30)   DEFAULT ' '  NOT NULL,
+    First       varchar(15)   DEFAULT ' '   NOT NULL,
+    Last        varchar(15)   DEFAULT ' '  NOT NULL,
     Phone       varchar(15)     NOT NULL,
 
     PRIMARY KEY (Email)
