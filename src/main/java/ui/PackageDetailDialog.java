@@ -55,7 +55,7 @@ public class PackageDetailDialog extends JDialog {
         buttonPanel.add(okPanel, gbc);
         buttonOK = new JButton();
         buttonOK.setText("OK");
-        buttonOK.setEnabled(false);
+        buttonOK.setEnabled(true);
         gbc = new GridBagConstraints();
         gbc.gridx = 0;
         gbc.gridy = 0;
