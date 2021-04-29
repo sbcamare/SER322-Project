@@ -30,7 +30,7 @@ public class DeliveryListRenderer extends JPanel implements ListCellRenderer<Del
 
         iconLabel = new JLabel();
 
-        Icon loginIcon = new ImageIcon(getClass().getResource("/ui/icons/big-parcel-48.png"));
+        Icon loginIcon = new ImageIcon(getClass().getResource("/icons/big-parcel-48.png"));
         iconLabel.setIcon(loginIcon);
         add(iconLabel, BorderLayout.WEST);
 
