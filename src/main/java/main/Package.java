@@ -108,7 +108,8 @@ public class Package {
 
             statement.execute(); // EXECUTE QUERY
 
-            System.out.println("ALERT - main.User "+type+" info updated!");
+
+            System.out.println("ALERT - User "+type+" info updated!");
 
         }
         catch (SQLException se) {

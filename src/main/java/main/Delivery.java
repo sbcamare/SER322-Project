@@ -40,6 +40,10 @@ public class Delivery {
         return getDeliveryInfo("FromAddress");
     }
 
+    public String getPackageID() {
+        return getDeliveryInfo("PackageID");
+    }
+
     // Used for getting delivery information
     private String getDeliveryInfo(String data) {
         ResultSet resultSet = null;

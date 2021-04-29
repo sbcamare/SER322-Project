@@ -1,5 +1,7 @@
 package main;
 
+import main.Delivery;
+
 import util.Database;
 import util.App;
 
@@ -60,6 +62,7 @@ public class Main {
 			System.out.println(delTest.getShippingSpeed());
 			System.out.println(delTest.getToAddress());
 			System.out.println(delTest.getFromAddress());
+			System.out.println(delTest.getPackageID());
 
 		} catch (Exception e) {
 			e.printStackTrace();
