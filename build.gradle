@@ -1,6 +1,6 @@
 apply plugin: 'application'
 
-mainClassName = 'Main'
+mainClassName = 'main.Main'
 
 compileJava.options.encoding = 'UTF-8'
 
