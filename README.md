@@ -39,8 +39,8 @@
 
 ---
 ## How to run
-* Load ```console.sql``` into MySQL for Database - found in ```sql-data`` folder
-* Load ``console_1.sql`` into MySQL for initial Database data - found in ```sql-data`` folder
+* Load ```console.sql``` into MySQL for Database - found in ```sql-data``` folder
+* Load ``console_1.sql`` into MySQL for initial Database data - found in ```sql-data``` folder
 * Use ```gradle run -Pconnection="CONNECTIONNAME" -Puser="USERNAME" -Ppass="PASSWORD" -Pdriver="DRIVER"```
 
 ### Gradle args
