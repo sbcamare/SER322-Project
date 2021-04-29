@@ -1,6 +1,9 @@
 
 package main;
 
+import util.App;
+import util.Database;
+
 import javax.swing.*;
 import java.sql.*;
 
@@ -31,8 +34,7 @@ public class DeliveryList {
         Connection connection = null;
 
         try {
-            Class.forName("org.sqlite.JDBC"); // LOADING DRIVER
-            connection = DriverManager.getConnection("jdbc:sqlite:KASE.db"); // CONNECTING TO DATABASE
+            connection = Database.getConnection(); // CONNECTING TO DATABASE
 
             // PREPARING STATEMENT
             statement = connection.prepareStatement("SELECT DeliveryID FROM delivery;");
