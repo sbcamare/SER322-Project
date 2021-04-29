@@ -108,6 +108,7 @@ public class Package {
 
             statement.execute(); // EXECUTE QUERY
 
+
             System.out.println("ALERT - User "+type+" info updated!");
 
         }

@@ -69,7 +69,7 @@ public class YourPackagesPanel extends JPanel {
         gbc.insets = new Insets(20, 0, 20, 0);
         ypPanel.add(spacer4, gbc);
 
-        packageListPanel = new JPanel();
+        packageListPanel = new DeliveryListPanel();
         packageListPanel.setLayout(new GridBagLayout());
         gbc = new GridBagConstraints();
         gbc.gridx = 1;
