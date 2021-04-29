@@ -1,4 +1,4 @@
-#SER322 Group Project - Parcel Service
+# SER322 Group Project - Parcel Service
 
 ---
 
@@ -18,38 +18,26 @@
 #### - Parcels may be sent in an envelope or a box.
 #### - Users can store their preferred address and contact information.
 
----
-## TODO:
 
-### Back-end
-
-
-- Create package objects that hold package information
-- Create static login class that holds current login information
-
-
-
-### Front-end
-
-- Error checking for user input.
-- Add main parent window.
-- Allow users to view a list of packages 'related' to them.
-- Add button for adding new package.
-- Add button for printing package label.
-
----
 ## How to run
+---
 * Load ```console.sql``` into MySQL for Database - found in ```sql-data``` folder
 * Load ``console_1.sql`` into MySQL for initial Database data - found in ```sql-data``` folder
 * Use ```gradle run -Pconnection="CONNECTIONNAME" -Puser="USERNAME" -Ppass="PASSWORD" -Pdriver="DRIVER"```
 
+---
+
 ### Gradle args
+---
 * ```CONNECTIONNAME``` is the connection to your data base ex: ``jdbc:mysql://localhost:3306/parcel``
 * ```USERNAME``` is your username for MySQL, ex: ```root```
 * ```PASSWORD``` is your password for MySQL, ex: ```password```
 * ```DRIVER``` is your jdbc driver, ex: ```com.mysql.cj.jdbc.Driver```
 
+---
+
 ## How to use
+---
 * Users may create a new account upon running the program
   * Doing this requires that a user enter a ``First name``, ``Last name``, ``Phone number``, ``Email``, and ``password`` - all to be added to the data base    
 * Users may choose to login to an existing account that they have created or one that is already provided in the ``console_1.sql`` file.
