@@ -180,8 +180,8 @@ public class Main {
 	 * @param packageWeight
 	 */
 	
-	public static void sendPackage(Connection connect, int senderPhone, int receiverPhone, String senderEmail, String receiverEmail, String shippingSpeed, String toAddress, String fromAddress,
-			String packageType, int packageDimensions, double packageWeight, String firstName, String lastName) {
+	public static void sendPackage(Connection connect, String senderPhone, String receiverPhone, String senderEmail, String receiverEmail, String shippingSpeed, String toAddress, String fromAddress,
+			String packageType, String packageDimensions, double packageWeight, String firstName, String lastName) {
 		int newDelivery = -1;
 		
 		try {
@@ -195,7 +195,7 @@ public class Main {
 			if(userResult.next() == false) {
 				PreparedStatement user=connect.prepareStatement("INSERT INTO USER(Phone, Email, First, Last)" 
 						+ "VALUES(?,?,?,?);");
-				user.setInt(1, receiverPhone);
+				user.setString(1, receiverPhone);
 				user.setString(2, receiverEmail);
 				user.setString(3, firstName);
 				user.setString(4, lastName);
@@ -226,7 +226,7 @@ public class Main {
 				PreparedStatement receiver=connect.prepareStatement("INSERT INTO RECEIVER(Phone, Email, ToAddress)" 
 						+ "VALUES(?,?,?);");
 				
-				receiver.setInt(1, receiverPhone);
+				receiver.setString(1, receiverPhone);
 				receiver.setString(2, receiverEmail);
 				receiver.setString(3, toAddress);
 				receiver.executeUpdate();
@@ -252,7 +252,7 @@ public class Main {
 				PreparedStatement sender =connect.prepareStatement("INSERT INTO SENDER(Phone, Email, FromAddress)" 
 						+ "VALUES(?,?,?);");
 				
-				sender.setInt(1, senderPhone);
+				sender.setString(1, senderPhone);
 				sender.setString(2, senderEmail);
 				sender.setString(3, fromAddress);
 				sender.executeUpdate();
@@ -269,7 +269,7 @@ public class Main {
 			
 				newPackage.setString(1, packageType);
 				newPackage.setInt(2, delID);
-				newPackage.setInt(3, packageDimensions);
+				newPackage.setString(3, packageDimensions);
 				newPackage.setDouble(4, packageWeight);
 				newPackage.executeUpdate();
 			

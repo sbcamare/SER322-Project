@@ -1,7 +1,13 @@
 package ui;
 
 import javax.swing.*;
+
 import java.awt.*;
+import java.sql.Connection;
+
+import main.Main;
+import util.App;
+import util.Database;
 
 public class SendPackagePanel extends JPanel {
 
@@ -351,7 +357,24 @@ public class SendPackagePanel extends JPanel {
         spPanel.add(printButton, gbc);
 
 
+        printButton.addActionListener(e -> {
 
+			String receiverEmail = emailField.getText();
+			String dimensions = dimField.getText();
+			String fromAddress = shipFromField.getText();
+			String firstName = firstField.getText();
+			String lastName = lastField.getText();
+			String phone = phoneField.getText();
+			String toAddress = shipToField.getText();
+			String type = typeComboBox.getSelectedItem().toString();
+			String speed = speedComboBox.getSelectedItem().toString();
+			Double weight = Double.parseDouble(weightField.getText());
+
+			Main.sendPackage(Database.getConnection(), App.userPhone, phone, App.userEmail, receiverEmail, speed, toAddress, fromAddress,
+					type, dimensions, weight, firstName, lastName);
+
+
+		});
 
 
 
