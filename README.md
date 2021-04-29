@@ -19,7 +19,7 @@
 #### - Users can store their preferred address and contact information.
 
 
-## How to run
+## How to run:
 
 
 * Load ```console.sql``` into MySQL for Database - found in ```sql-data``` folder
@@ -27,7 +27,7 @@
 * Use ```gradle run -Pconnection="CONNECTIONNAME" -Puser="USERNAME" -Ppass="PASSWORD" -Pdriver="DRIVER"```
 
 
-### Gradle arguments
+### Gradle arguments:
 
 
 * ```CONNECTIONNAME``` is the connection to your data base ex: ``jdbc:mysql://localhost:3306/parcel``
@@ -36,7 +36,7 @@
 * ```DRIVER``` is your jdbc driver, ex: ```com.mysql.cj.jdbc.Driver```
 
 
-## How to use
+## How to use:
 
 
 * Users may create a new account upon running the program
@@ -44,11 +44,11 @@
 * Users may choose to login to an existing account that they have created or one that is already provided in the ``console_1.sql`` file.
   * Example: Email = ```luisR@gmail.com``` , Password = ```pass``` 
 * From here a user has 4 options
-  * ### Your Packages
+  * ### Your Packages:
     * Here a user can view all of the packages that are in relation to them
-  * ### Track Package
+  * ### Track Package:
     * Here a user can enter their tracking number for a package to find out its information
-  * ### Send Package
+  * ### Send Package:
     * Here a user can select to send a package by entering the package type
     * A package can be either a ``Box`` or a ``Card``
     * The user will also enter the dimensions of the box Ex: ``5x5x1``
@@ -57,6 +57,6 @@
     * The user can select enter where the package is shipping from
     * The user also needs to enter the ``First name``, ``Last name``, ``Email``, ``Phone number``, and ``Ships to`` address of the receiver.
     * Once these fields are filled out A user can select ```Print Shipping Label``` and a file will be generated for you with a shipping label.
-  * ### Your Account
+  * ### Your Account:
     * This displays all of your account information
 
