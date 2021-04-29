@@ -12,15 +12,16 @@ import util.Database;
 public class SendPackagePanel extends JPanel {
 
     public SendPackagePanel() {
-
+        String[] speedList = new String[] {"Slow", "Fast"};
+        String[] typeList = new String[] {"Card", "Box"};
         JPanel spPanel;
         JLabel titleLabel;
         JLabel messageLabel;
         JLabel message2Label;
         JTextField dimField;
         JTextField weightField;
-        JComboBox speedComboBox;
-        JComboBox typeComboBox;
+        JComboBox<String> speedComboBox;
+        JComboBox<String> typeComboBox;
         JTextField shipFromField;
         JTextField firstField;
         JTextField lastField;
@@ -195,14 +196,14 @@ public class SendPackagePanel extends JPanel {
         gbc.anchor = GridBagConstraints.WEST;
         gbc.fill = GridBagConstraints.HORIZONTAL;
         spPanel.add(weightField, gbc);
-        speedComboBox = new JComboBox();
+        speedComboBox = new JComboBox<>(speedList);
         gbc = new GridBagConstraints();
         gbc.gridx = 4;
         gbc.gridy = 11;
         gbc.anchor = GridBagConstraints.WEST;
         gbc.fill = GridBagConstraints.HORIZONTAL;
         spPanel.add(speedComboBox, gbc);
-        typeComboBox = new JComboBox();
+        typeComboBox = new JComboBox<>(typeList);
         gbc = new GridBagConstraints();
         gbc.gridx = 4;
         gbc.gridy = 5;

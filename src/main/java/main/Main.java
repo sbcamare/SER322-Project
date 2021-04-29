@@ -20,6 +20,13 @@ public class Main {
 
 	public static void main(String[] args) {
 		ResultSet rs = null;
+		if(args.length != 4) {
+            System.out.println("If using gradle use:");
+            System.out.println("gradle run -Pconnection=\"CONNECTIONNAME\" -Puser=\"USERNAME\" -Ppass=\"PASSWORD\" -Pdriver=\"DRIVER\"");
+            System.out.println("Else args must be: ");
+            System.out.println("\"CONNECTIONNAME\" \"USERNAME\" \"PASSWORD\" \"DRIVER\"");
+            System.exit(0);
+        }
 		System.out.println("CONNECTION: " + args[0]);
 		System.out.println("USER: " + args[1]);
 		System.out.println("PASS: " + args[2]);
