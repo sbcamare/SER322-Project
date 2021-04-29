@@ -64,6 +64,9 @@
     * A package can be either a ``Box`` or a ``Card``
     * The user will also enter the dimensions of the box Ex: ``5x5x1``
     * The user can also enter the weight of the package
+    * The user can select the shipping speed either ``Slow`` or ``Fast``
+    * The user can select enter where the package is shipping from
+    * The user also needs to enter the ``First name``, ``Last name``, ``Email``, ``Phone number``, and ``Ships to`` address of the receiver.
     * Once these fields are filled out A user can select ```Print Shipping Label``` and a file will be generated for you with a shipping label.
   * ### Your Account
     * This displays all of your account information
