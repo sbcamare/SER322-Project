@@ -42,7 +42,7 @@ public class DeliveryListRenderer extends JPanel implements ListCellRenderer<Del
         cellPanel = new JPanel();
         cellPanel.setLayout(new GridBagLayout());
         uLabel = new JLabel();
-        uLabel.setText("DELIVERY ID:");
+        uLabel.setText("ID:");
         GridBagConstraints gbc;
         gbc = new GridBagConstraints();
         gbc.gridx = 0;

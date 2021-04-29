@@ -369,7 +369,7 @@ public class SendPackagePanel extends JPanel {
 			String toAddress = shipToField.getText();
 			String type = typeComboBox.getSelectedItem().toString();
 			String speed = speedComboBox.getSelectedItem().toString();
-			Double weight = Double.parseDouble(weightField.getText());
+			double weight = Double.parseDouble(weightField.getText());
 
 			Main.sendPackage(Database.getConnection(), App.userPhone, phone, App.userEmail, receiverEmail, speed, toAddress, fromAddress,
 					type, dimensions, weight, firstName, lastName);

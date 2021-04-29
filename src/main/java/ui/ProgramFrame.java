@@ -20,6 +20,10 @@ public class ProgramFrame extends JFrame {
 		JPanel sendPackagePanel;
 		JPanel yourAccountPanel;
 
+		ImageIcon img = new ImageIcon(getClass().getResource("/icons/tracking-96.png"));
+
+		this.setIconImage(img.getImage());
+
 
 		parentPanel = new JPanel();
 		parentPanel.setLayout(new BorderLayout(0, 0));
