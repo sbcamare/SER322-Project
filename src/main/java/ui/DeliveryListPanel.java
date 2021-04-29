@@ -12,25 +12,7 @@ public class DeliveryListPanel extends  JPanel {
         deliveryCellList.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         deliveryCellList.setCellRenderer(new DeliveryListRenderer());
 
-        JOptionPane jop = new JOptionPane(deliveryCellList, JOptionPane.PLAIN_MESSAGE, JOptionPane.DEFAULT_OPTION, null);
-        jop.setMessage(deliveryCellList);
-
-        JDialog userListDialog = jop.createDialog("Select user");
-
-        deliveryCellList.addListSelectionListener(e1 -> {
-
-            if (!e1.getValueIsAdjusting()) {
-
-                if (deliveryCellList.getSelectedIndex() != -1) {
-//                    Delivery selectedUser = deliveryCellList.getSelectedValue();
-//                    JDialog editUserDialog = new EditUserDialog(selectedUser);
-//                    editUserDialog.setLocationRelativeTo(userListDialog);
-//                    editUserDialog.setVisible(true);
-                }
-            }
-        });
-
-        userListDialog.setVisible(true);
+        add(deliveryCellList);
     }
 
 }

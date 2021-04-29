@@ -74,9 +74,8 @@ public class YourPackagesPanel extends JPanel {
         gbc = new GridBagConstraints();
         gbc.gridx = 1;
         gbc.gridy = 5;
-        gbc.fill = GridBagConstraints.BOTH;
-        gbc.ipady = 50;
-        gbc.insets = new Insets(100, 0, 100, 0);
+        gbc.fill = GridBagConstraints.BOTH; // TODO: Check what this does ... maybe get rid of the bottom and top margin
+        gbc.insets = new Insets(0, 0, 0, 0);
         ypPanel.add(packageListPanel, gbc);
         packageListPanel.setBorder(BorderFactory.createTitledBorder(BorderFactory.createLineBorder(Color.black), null, TitledBorder.DEFAULT_JUSTIFICATION, TitledBorder.DEFAULT_POSITION, null, null));
 
