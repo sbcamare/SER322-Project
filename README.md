@@ -1,6 +1,6 @@
 # SER322 Group Project - Parcel Service
-
 ---
+
 
 ## Application Domain: 
 
@@ -20,24 +20,25 @@
 
 
 ## How to run
----
+
+
 * Load ```console.sql``` into MySQL for Database - found in ```sql-data``` folder
 * Load ``console_1.sql`` into MySQL for initial Database data - found in ```sql-data``` folder
 * Use ```gradle run -Pconnection="CONNECTIONNAME" -Puser="USERNAME" -Ppass="PASSWORD" -Pdriver="DRIVER"```
 
----
 
-### Gradle args
----
+### Gradle arguments
+
+
 * ```CONNECTIONNAME``` is the connection to your data base ex: ``jdbc:mysql://localhost:3306/parcel``
 * ```USERNAME``` is your username for MySQL, ex: ```root```
 * ```PASSWORD``` is your password for MySQL, ex: ```password```
 * ```DRIVER``` is your jdbc driver, ex: ```com.mysql.cj.jdbc.Driver```
 
----
 
 ## How to use
----
+
+
 * Users may create a new account upon running the program
   * Doing this requires that a user enter a ``First name``, ``Last name``, ``Phone number``, ``Email``, and ``password`` - all to be added to the data base    
 * Users may choose to login to an existing account that they have created or one that is already provided in the ``console_1.sql`` file.
