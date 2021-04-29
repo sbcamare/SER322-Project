@@ -44,6 +44,16 @@ public class Delivery {
         return getDeliveryInfo("PackageID");
     }
 
+    public Boolean checkDelivery() {
+        String checker = null;
+        checker = getDeliveryInfo("DeliveryID");
+        if (checker == null) {
+            return false;
+        } else if (checker.equalsIgnoreCase("")) {
+            return false;
+        } else return true;
+    }
+
     // Used for getting delivery information
     private String getDeliveryInfo(String data) {
         ResultSet resultSet = null;
@@ -64,7 +74,6 @@ public class Delivery {
             if(resultSet.next()) {
                 resultFound = resultSet.getString(1);
             }
-
             return resultFound;
         }
         catch (SQLException se) {
